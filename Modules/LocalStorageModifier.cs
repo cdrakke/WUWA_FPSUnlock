@@ -6,7 +6,6 @@ namespace WUWA_FPSUnlock.Modules
     {
         public static bool Apply120FPSCap(string @path)
         {
-            MessageBox.Show(@path);
             using (var connection = new SqliteConnection($"Data Source={@path}")) {
                 connection.Open();
 
