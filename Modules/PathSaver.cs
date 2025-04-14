@@ -10,33 +10,35 @@ namespace WUWA_FPSUnlock.Modules
     public class AppSettings
     {
         public string SavedPath { get; set; }
+        public int PreferredFPS { get; set; }
+        public bool PersistentFPSUnlock { get; set; }
     }
 
     public class PathSaver
     {
         private static readonly string settingsFile = "settings.json";
 
-        public static void SavePath(string path)
+        public static void SaveData(string path, int preferredfps, bool persistentfpsunlock)
         {
-            var settings = new AppSettings { SavedPath = path };
+            var settings = new AppSettings { SavedPath = path, PreferredFPS = preferredfps, PersistentFPSUnlock = persistentfpsunlock };
             string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(settingsFile, json);
         }
 
-        public static string LoadPath()
+        public static AppSettings? LoadData()
         {
             if (!File.Exists(settingsFile))
-                return string.Empty;
+                return null;
 
             try
             {
                 string json = File.ReadAllText(settingsFile);
                 var settings = JsonSerializer.Deserialize<AppSettings>(json);
-                return settings?.SavedPath ?? string.Empty;
+                return settings;
             }
             catch
             {
-                return string.Empty;
+                return null;
             }
         }
     }
