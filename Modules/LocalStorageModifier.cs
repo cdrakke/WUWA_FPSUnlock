@@ -43,7 +43,7 @@ namespace WUWA_FPSUnlock.Modules
                     //MessageBox.Show($"Persistent FPS trigger created (FPS = {fps}).", "Trigger Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // If the key "CustomFrameRate" exists, update it; otherwise insert it
+                // If the key "CustomFrameRate" exists, update it.
                 string selectQuery = "SELECT COUNT(*) FROM LocalStorage WHERE key = 'CustomFrameRate'";
                 var checkCmd = new SqliteCommand(selectQuery, connection);
                 long count = (long)checkCmd.ExecuteScalar();
