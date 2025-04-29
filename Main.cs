@@ -6,7 +6,7 @@ namespace WUWA_FPSUnlock
     {
         private string RootPath;
         private string ModifiedPath;
-        private string DBPathAfterRoot = @"\Wuthering Waves Game\Client\Saved\LocalStorage";
+        private string DBPathAfterRoot = @"\Client\Saved\LocalStorage";
         private string DBPathAfterRootGame = @"\Client\Saved\LocalStorage";
         private string DBPathFull;
         private string FileName = "LocalStorage.db";
